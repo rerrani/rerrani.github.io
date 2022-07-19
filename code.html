@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+  Raphael Errani
+  This code is cc:by-nc-sa licenced, feel free to use it but keep the following in mind:
+  http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en
+-->
+  
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <title>Rapha&euml;l Errani, Strasbourg Observatory</title>
+  <meta name="AUTHOR" content="Raphael Errani">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <style>
+    html {overflow: auto; margin-left: calc(100vw - 100%); margin-right: 0;}
+    a:link {text-decoration: none; color: black;}
+    a:visited {text-decoration: none; color: black;}
+    a:active {text-decoration: none; color: black;}
+    a:hover {text-decoration: none; color: red;}
+    a.menu:link {text-decoration: none; color: grey;}
+    a.menu:visited {text-decoration: none; color: grey;}
+    a.menu:active {text-decoration: none; color: grey;}
+    a.menu:hover {text-decoration: none; color: red;}
+    .imgshadow {-webkit-box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+                -moz-box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+                box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);}
+    .outshadow {-webkit-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
+                box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);}
+    body {font-family: Tahoma, Geneva, sans-serif; 
+          font-size:12px;  background-color:#E3E3E3; 
+          margin-top:0px; margin-left:0px; margin-right:0px; margin-bottom:0;}
+  </style>
+</head>
+
+
+
+<body>
+  <table style="width: 900px; border-spacing:0px; padding:0px; background-color:white; border: 0px; padding-bottom: 20px; text-align: left; margin-left: auto; margin-right: auto" class="outshadow">
+
+    <!-- banner image -->
+    <tr><TD style="width: 900px; height:177px; border-spacing:0px; padding:0px; border: 0px; overflow: hidden; background-image:url(top.jpg);"></TD></tr>
+
+    <!-- navigation -->
+    <tr><td style="color: grey; text-align: center;">
+    <a class="menu" href="index.html" target="_self">index</a> | 
+    <a class="menu" href="astro.html" target="_self">abstracts</a> | 
+    <a class="menu" href="plots.html" target="_self">plots</a> | 
+    <a class="menu" href="code.html" target="_self">code</a> | 
+    <a class="menu" href="landscapes.html" target="_self">landscapes</a> 
+    </td></tr>
+
+    <!-- CONTENT -->  
+
+    <tr><td style="padding-top:40px; color: black; text-align: left;  padding-left: 40px; padding-right:40px; font-size:12px;">
+    
+    
+
+    <div style="color: grey;" id="nbopy">
+    <b>nbopy: tools for generating equilibrium N-body models and embedded massless tracers</b><br>
+    <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank">code: github.com/rerrani/nbopy</a>; <a class="menu" href="http://arxiv.org/abs/1906.01642" target="_blank">paper: arXiv:1906.01642</a>; plots here are copied from <a class="menu" href="https://era.ed.ac.uk/handle/1842/36662" target="_blank">my thesis (link)</a>.
+    </div>
+    <br>
+    
+    <br> 
+    <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank" id="nbody"><b><i>nbody.py</i></b></a>: The code generates equilibrium N-body realisations of spherical, self-gravitating models with isotropic velocity dispersion, following the procedure described in <a class="menu" href="http://arxiv.org/abs/1906.01642" target="_blank">EP20</a>.
+    The desired density profile needs to be specified; the example code on github generates a Hernquist profile. 
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/density_code.png" width="450"   style="border: 0px; text-align: center;" alt="plot" >
+    </div>
+    <br>
+    The main parameters to adapt are the number of particles to generate, as well as the resolution of the energy and radius grids used to sample the density profile and the distribution function. 
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/parameters_code.png" width="485"   style="border: 0px; text-align: center;" alt="plot" >
+    </div>
+    <br>
+    The positions of the N-body particles are drawn using inverse transform sampling from the desired density profile.
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/cumu_sampling.png" width="300"   style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>
+    <br>
+    The distribution function is approximated through a numerical evaluation of the Eddington equation.
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/eddington_eq.png" width="390"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    <br>
+    Combined with the density of states
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/density_of_states_eq.png" width="390"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    <br>
+    the differential energy distribution is computed.
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/energy_dist_eq.png" width="240"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    <br>
+    In a final step, for each position <i>r</i>, the likelihood is computed of a particle to have a velocity of <i>v</i>. 
+    Isotropic velocities are drawn from this likelihood through rejection sampling.
+    <br>
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/reject_sampling.png" width="300"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>
+    <br>
+    The output is a 6D array of positions and velocities. The plot below shows a Plummer N-body model generated using the code.
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/plummer.png" width="450"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>   
+    <br>
+    Launching the <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank">code as on github</a> (<i>nbody.py</i>) produces a <i>N</i>=10<sup>7</sup> particle model of a Hernquist sphere, and saves the particle positions and velocities as a binary numpy file <i>model.npy</i>. Changing the model name in the code to <i>model.dat</i> produces ASCII output.    
+
+    
+    <div style="padding: 10px"><br></div>   
+    <hr style="width: 650px; height: 2px; border-width: 0px; color: gray; background-color: gray">
+    <div style="padding: 10px"><br></div>
+    <!--    ................................................................................................   -->
+    
+    
+    
+    
+    
+    
+    
+    <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank" id="npaint"><b><i>npaint.py</i></b></a>: This is an implementation of the Bullock &amp; Johnston 2005 method for associating stellar weights to N-body models, following the steps described in <a class="menu" href="http://arxiv.org/abs/1906.01642" target="_blank">EP20</a>.
+    The parameters which control the code are near identical to those of <i>nbody.py</i>. In addition to the density profile which sources the potential, the tracer density profile needs to be defined. <br>
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/npaint_code.png" width="530"   style="border: 0px; text-align: center;" alt="plot" >
+    </div>
+    <br>
+    Tagging probabilities are computed for spherical, isotropic systems, assuming that stars are massless tracers of the underlying potential. The probabilities are proportional to the ratio of the stellar and dark matter distribution functions at fixed energy.
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/tagging_eq.png" width="300"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    <br>
+    The probabilities need to be computed only once, and can then be applied to all simulation snapshots.
+    The figure below shows two example differential energy distributions of a dark matter halo and an embedded stellar tracer, as well as the resulting tagging probabilities. 
+    <br><br>  
+    <div style="text-align: center">    
+    <IMG src="code/tagging_probabilities.png" width="450" style="border: 0px; text-align: center;" alt="plot" class="imgshadow">
+    <br>
+    </div>
+    <br>
+    Launching the <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank">code as on github</a> (first <i>nbody.py</i>, then <i>npaint.py</i>) loads the previously produced <i>N</i>=10<sup>7</sup> particle model of a Hernquist sphere and computes tagging probabilities for an embedded Plummer model with a scale radius of 20 per cent of the Hernquist scale radius. The probabilities are saved as a numpy file called <i>stars.npy</i>.
+    
+
+    <div style="padding: 10px"><br></div>   
+    <hr style="width: 650px; height: 2px; border-width: 0px; color: gray; background-color: gray">
+    <div style="padding: 10px"><br></div>
+    <!--    ................................................................................................   -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div style="color: grey;">
+    <b>tipy: an empirical model for the tidal evolution of NFW subhalos and embedded dwarf galaxies</b><br>
+    <a class="menu" href="http://github.com/rerrani/tipy" target="_blank">code: github.com/rerrani/tipy</a>; papers <a class="menu" href="http://arxiv.org/abs/2011.07077" target="_blank">: arXiv:2011.07077</a>, <a class="menu" href="http://arxiv.org/abs/2111.05866" target="_blank">arXiv:2111.05866</a>
+    </div>
+    <br>    
+
+    <a class="menu" href="http://github.com/rerrani/tipy" target="_blank" id="tipy"><b><i>tipy.py</i></b></a>, 
+    <a class="menu" href="https://github.com/rerrani/tipy/blob/main/README.md" target="_blank">README file (link)</a>: 
+    This code is an implementation of the <a class="menu" href="http://arxiv.org/abs/2011.07077" target="_blank">EN21</a> empirical tidal evolution model, outlined below. 
+    <br><br>
+    
+    The model parameters are calibrated to the tidal evolution of NFW subhalos orbiting within an isothermal potential.
+    <div style="text-align: center">
+    <IMG src="code/isotherm.png" width="200"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    The main parameter determining the subhalo tidal evolution is the initial density contrast of the subhalo with respect to the host at pericentre. 
+    The host crossing time at pericentre equals: 
+    <div style="text-align: center">
+    <IMG src="code/Tperi_eq.png" width="157"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    The host properties are specified in the code through the pericentre distance <i>r</i><sub>peri</sub>, the ratio of apo-to-pericentre <i>r</i><sub>apo</sub>/<i>r</i><sub>peri</sub>, the orbital period <i>T</i><sub>orb</sub>, and the period of a circular orbit at pericentre, <i>T</i><sub>peri</sub>. 
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/host_orbit_code.png" width="550"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    <br>
+    Similarly, the characteristic density of the subhalo is described through the crossing time <i>T</i><sub>mx</sub> at the radius <i>r</i><sub>mx</sub> where its circular velocity curve peaks.  
+    <div style="text-align: center">
+    <IMG src="code/Tmax.png" width="250"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    In the code, the initial subhalo structure is defined through the its radius of maximum circular velocity <i>r</i><sub>mx</sub> and the circular velocity <i>V</i><sub>mx</sub> at that radius.
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/subhalo_params_code.png" width="550"  style="border: 0px; text-align: center;" alt="plot">
+    </div> 
+    <br>
+    The model empirically describes the full time evolution of the subhalo structure towards the final asymptotic remnant state. For subhalos with an initial crossing time of <i>T</i><sub>mx0</sub>/<i>T</i><sub>peri</sub>&gt;2/3 (the <i>heavy mass loss regime</i>), the subhalo crossing time in the final remnant state is set by the host crossing time at pericentre alone:
+    <div style="text-align: center">
+    <IMG src="code/TmxTperi4.png" width="117"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    The final density profile is that of an exponentially truncated cusp.
+    <div style="text-align: center">
+    <IMG src="code/exp_cusp.png" width="330"  style="border: 0px; text-align: center;" alt="plot">
+    </div>    
+    Subhalos evolve along well-defined <i>tidal tracks</i>, as introduced in Pe&ntilde;arrubia et al. 2008: the subhalo structure depends only on how much of the initial mass was lost through tides, but not on the orbit. The tidal tracks used in this implementation are as fitted in <a class="menu" href="http://arxiv.org/abs/2011.07077" target="_blank">EN21</a>, with &alpha;=0.4 and &beta;=0.65.
+    <div style="text-align: center">
+    <IMG src="code/tidal_track_eq.png" width="450"  style="border: 0px; text-align: center;" alt="plot">
+    </div>     
+    The tracks are shown as a black dashed curve in the plot below, with N-body models evolved on different orbits shown in different colours. 
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/tidal_tracks.png" width="550"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>
+    <br>
+    For ease of use, the <a class="menu" href="http://github.com/rerrani/tipy" target="_blank">code on github</a> (<i>tipy.py</i>) can be run without any modification to produce an example subhalo tidal evolution as a function of time.
+    
+    <div style="padding: 10px"><br></div>   
+    <hr style="width: 650px; height: 2px; border-width: 0px; color: gray; background-color: gray">
+    <div style="padding: 10px"><br></div>
+    <!--    ................................................................................................   -->
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <a class="menu" href="http://github.com/rerrani/tipy" target="_blank" id="dNdE"><b><i>dNde.py</i></b></a>, 
+    <a class="menu" href="https://github.com/rerrani/tipy/blob/main/README.md" target="_blank">README file (link)</a>: 
+    This bit of code computes the tidally evolved energy distribution of stellar tracers embedded in a dark matter subhalo using the procedure introduced in <a class="menu" href="http://arxiv.org/abs/2111.05866" target="_blank">E+22</a>. The evolved energy distribution, together with the evolved potential, can later be used to derive the evolved stellar density profile and velocity dispersion. 
+    <br><br>
+    
+    The model describes tidal evolution through a truncation in energy in the initial conditions. In the following, energies per unit mass
+    <div style="text-align: center">
+    <IMG src="code/E_per_unit_mass.png" width="151"  style="border: 0px; text-align: center;" alt="plot">
+    </div>       
+    are measured relative to the initial subhalo ground state.
+    <div style="text-align: center">
+    <IMG src="code/Energy_eq.png" width="125"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    In these units, &epsilon;=0 corresponds to the most-bound state, and &epsilon;=1 to the boundary between bound and unbound (the plots below show the logarithm of &epsilon;).
+    As tidal stripping progresses, the energy truncation (black dashed curves) moves towards more-bound energies, right-to-left in the plot below.
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/Energy_Truncation.png" width="530"  style="border: 0px; text-align: center;" alt="plot" class="imgshadow">
+    </div>  
+    <br>
+    The shape of the tidal energy truncation may be approximated through the following function:
+    <div style="text-align: center">
+    <IMG src="code/filter_function_eq.png" width="240"  style="border: 0px; text-align: center;" alt="plot">
+    </div>    
+    with <i>a</i>=0.85 and <i>b</i>=12. The peak &epsilon;<sub>mx,t</sub> of the truncated Energy distribution correlates with the final bound mass fraction <i>M</i><sub>mx</sub>/<i>M</i><sub>mx0</sub> after relaxation.
+    <div style="text-align: center">
+    <IMG src="code/energy_mass_correlation_eq.png" width="250"  style="border: 0px; text-align: center;" alt="plot">
+    </div>      
+    The relaxation process is modelled empirically through the initial-to-final energy mapping measured from N-body models. The plot below shows such an energy map for a subhalo that has been evolved for 10 orbital periods on an eccentric orbit. The mapping preserves the order in energy in the initial conditions: on average, the most-bound particles in the initial conditions will also be the most-bound particles in the relaxed remnant. 
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/EiEf.png" width="530"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>  
+    <br>
+    The mapping is parametrised through the following fit:
+    <div style="text-align: center">
+    <IMG src="code/EfEi_eq.png" width="239"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    Stars embedded in the dark matter subhalo are subject to the same tidal truncation as the dark matter. Applying the same formalism to the stellar energy distribution allows to model the evolution of the stellar component. Appendix G in <a class="menu" href="http://arxiv.org/abs/2111.05866" target="_blank">E+22</a> lists the different steps involved in computing the final energy distribution. 
+    
+    The <a class="menu" href="http://github.com/rerrani/tipy" target="_blank">code on github</a> (<i>dNde.py</i>) parametrises the initial stellar energy distribution through the function
+    <div style="text-align: center">
+    <IMG src="code/dNdE_eq.png" width="420"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    In the above equation, the parameter &alpha; determines how the number of stars drops towards lower energies, while the parameter &beta; determines how sharply stars are truncated beyond the scale energy &epsilon;<sub>s</sub>. For &alpha;=&beta;, the scale energy coincides with the energy where d<i>N</i>/d&epsilon; peaks. 
+    The figure below compares stellar profiles of this parametric energy distribution with Plummer- and exponential models with a projected half-light radius of <i>R</i><sub>h</sub> = <i>r</i><sub>mx</sub>/4.
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/dNdE_parametric.png" width="570"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>  
+    <br>
+    The <a class="menu" href="http://github.com/rerrani/tipy" target="_blank">code on github</a> (<i>dNde.py</i>), as an example, is set up to model the evolution of a stellar tracer with initial &alpha;=&beta;=3, and a peak of the initial stellar energy distribution at log<sub>10</sub>(&epsilon;<sub>s</sub>)=&minus;0.32.
+    <div style="text-align: center">
+    <IMG src="code/dNdE_params_stars_code.png" width="210"  style="border: 0px; text-align: center;" alt="plot">
+    </div>    
+    The surrounding NFW subhalo has been stripped to a remnant mass <i>M</i><sub>mx</sub> of one per cent of its initial mass <i>M</i><sub>mx0</sub>. 
+    <div style="text-align: center">
+    <IMG src="code/dNdE_params_DM_code.png" width="210"  style="border: 0px; text-align: center;" alt="plot">
+    </div>
+    The evolved stellar energy distribution is saved as an ASCII table in the file <i>final_dNde.dat</i>.
+ 
+    <div style="padding: 10px"><br></div>   
+    <hr style="width: 650px; height: 2px; border-width: 0px; color: gray; background-color: gray">
+    <div style="padding: 10px"><br></div>
+    <!--    ................................................................................................   -->
+    
+ 
+ 
+ 
+ 
+    <a class="menu" href="http://github.com/rerrani/pyxel" target="_blank" id="pyxel"><b><i>pyxel.py</i></b></a>: 
+    This bit of code can be used to generate surface density maps of sparse simulation data. It takes 2D coordinates of N-body particles, maps them on a grid, and subsequently expands each non-empty grid cell until it contains a set minimum number of particles. Each pixel of the output grid is assigned the average surface density of all expanded grid cells that overlap on it. The figure below illustrates how the non-empty grid cells are expanded until each of them contains at least two particles. The resolution in different regions of the output grid can be intuitively read off from the expanded grid cell size.
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/pyxel.png" width="500"  style="border: 0px; text-align: center; padding: 20px;" alt="plot" class="imgshadow" >
+    </div>   
+    <br>
+    The <a class="menu" href="http://github.com/rerrani/pyxel" target="_blank">code on github</a> runs a minimum working example upon launch:  The ASCII file <i>Plummer.dat</i> is read, which contains <i>x,y</i> coordinates of an N-body Plummer model (shown below in the left-hand panel). The output is written to the ASCII file <i>map.dat</i>, which contains <i>x,y</i> pixel coordinates, as well as the average surface brightness at each pixel (plotted below in the right-hand panel).
+    <br><br>
+    <div style="text-align: center">
+    <IMG src="code/pyxel_plummer.png" width="680"  style="border: 0px; text-align: center;" alt="plot" class="imgshadow" >
+    </div>    
+    <br>
+        
+    
+    
+    
+    <!-- end of page -->
+    <div style="padding: 20px"><br></div> 
+    </td></tr>         
+  </table>
+
+
+
+</body>
+</html>
+

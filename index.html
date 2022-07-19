@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+  Raphael Errani
+  This code is cc:by-nc-sa licenced, feel free to use it but keep the following in mind:
+  http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en
+  This excludes the click-zoom-image-preview modal, which is adapted from W3Schools code.
+-->
+
+
+
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <title>Rapha&euml;l Errani, Strasbourg Observatory</title>
+  <meta name="AUTHOR" content="Raphael Errani">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <style>
+    html {overflow: auto; margin-left: calc(100vw - 100%); margin-right: 0;}
+    a:link {text-decoration: none; color: black;}
+    a:visited {text-decoration: none; color: black;}
+    a:active {text-decoration: none; color: black;}
+    a:hover {text-decoration: none; color: red;}
+    a.menu:link {text-decoration: none; color: grey;}
+    a.menu:visited {text-decoration: none; color: grey;}
+    a.menu:active {text-decoration: none; color: grey;}
+    a.menu:hover {text-decoration: none; color: red;}
+    .imgshadow {-webkit-box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+                -moz-box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+                box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);}
+    .outshadow {-webkit-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
+                box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);}
+    body {font-family: Tahoma, Geneva, sans-serif; 
+          font-size:12px;  background-color:#E3E3E3; 
+          margin-top:0px; margin-left:0px; margin-right:0px; margin-bottom:0;}
+
+    
+    #myImg         {
+    cursor: pointer;
+    transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        margin-top:100px;
+        top: 0px;
+        left: 50%;
+        width: 450px; 
+        height: 450px; 
+        overflow: hidden; 
+        background-color: rgb(255,255,255); 
+        background-color: rgba(255,255,255,0.0); 
+        
+    }
+    .modal-content {
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-bottom: 25px;
+        margin-right: 25px;
+        display: block;
+        width: 400px;
+        height: 400px;
+        -webkit-box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+        -moz-box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+        box-shadow: 0px 0px 3px 0px rgba(140,140,140,1);
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <table style="width: 900px; border-spacing:0px; padding:0px; background-color:white; border: 0px; padding-bottom: 20px; text-align: left; margin-left: auto; margin-right: auto" class="outshadow">
+
+    <!-- banner image -->
+    <tr><TD style="width: 900px; height:177px; border-spacing:0px; padding:0px; border: 0px; overflow: hidden; background-image:url(top.jpg);"></TD></tr>
+
+    <!-- navigation -->
+    <tr><td style="color: grey; text-align: center;">
+    <a class="menu" href="index.html" target="_self">index</a> | 
+    <a class="menu" href="astro.html" target="_self">abstracts</a> | 
+    <a class="menu" href="plots.html" target="_self">plots</a> | 
+    <a class="menu" href="code.html" target="_self">code</a> | 
+    <a class="menu" href="landscapes.html" target="_self">landscapes</a> 
+    </td></tr>
+
+    <!-- CONTENT 2 COLUMN-->
+    <tr><td style="padding-top:20px">
+      <table style="width: 900px; text-align: left; border:0px solid black; padding-left: 40px; padding-right: 40px; font-size:12px;"> 
+        <tr><td style="border:0px; padding-left: 0px; padding-bottom: 20px;">
+        <div style="color: grey;"><b> Rapha&euml;l Errani </b> </div> <br>
+        <div style="text-align: justify">
+        Hi! I'm a postdoc at the <a href="https://astro.unistra.fr/" target="_blank">Observatory of Strasbourg</a>, interested in the clustering properties of dark matter on small scales, and particularly in the tidal evolution of dwarf galaxies. My work lies at the interface between dynamical modelling, numerical simulations and observational constraints.
+        Before moving to France, I worked as <a href="https://www.cita.utoronto.ca/" target="_blank">CITA fellow</a> at the <a href="https://www.uvic.ca/science/physics/index.php" target="_blank">University of Victoria</a>, and did a PhD at the <a href="https://www.roe.ac.uk/ifa/" target="_blank">University of Edinburgh</a>. <!--googleoff: all--><a href="cv.pdf" target="_blank" rel="nofollow">Click here for a brief CV</a>.<!--googleon: all--> <br><br>
+        </div>
+        </td>
+        <td style="border:0px; padding-left: 40px; padding-bottom: 20px;">
+        
+        <IMG id="myImg" src="selfie.jpg" width="140" height="140" style="border: 0px; text-align: center;" alt="selfie" class="imgshadow">
+        
+        </td>
+        </tr>
+      </table>
+
+    <!-- CONTENT 1 COLUMN-->
+      <table style="width:900px; border:0px solid black; padding-left: 40px; padding-right: 40px; font-size:12px; text-align: left"> 
+        <tr><td style="color: grey;">Publications</td></tr>
+
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/2203.02513" target="_blank">RE, J. F. Navarro, R. Ibata, N. Martin, et al. (2022): C-19: Tidal debris of a dark matter-dominated globular cluster? arXiv:2203.02513</a></div></td></tr>                    
+        
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/2111.05866" target="_blank">RE, J. F. Navarro, R. Ibata, J. Pe&ntilde;arrubia (2022): Structure and kinematics of tidally limited satellite galaxies in LCDM, arXiv:2111.05866</a></div></td></tr>            
+        
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/2011.07077" target="_blank">RE, J. F. Navarro (2021): The asymptotic tidal remnants of cold dark matter subhalos, arXiv:2011.07077</a></div></td></tr>        
+        
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/1906.01642" target="_blank">RE, J. Pe&ntilde;arrubia (2020): Can tides disrupt cold dark matter subhaloes? arXiv:1906.01642</a></div></td></tr>
+        
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/1805.00484" target="_blank">RE, J. Pe&ntilde;arrubia, Matthew Walker (2018): Systematics in virial mass estimators for pressure-supported systems, arXiv:1805.00484</a></div></td></tr>
+        
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/1608.01849" target="_blank">RE, J. Pe&ntilde;arrubia, C. F.P. Laporte, F. G&oacute;mez (2017): The effect of a disc on the population of cuspy and cored dark matter substructures in Milky Way-like galaxies, arXiv:1608.01849</a></div></td></tr>
+
+        <tr> <td><div style="text-align: left; padding-left: 1em; text-indent:-1em;"><a href="http://arxiv.org/abs/1501.04968" target="_blank">RE, J. Pe&ntilde;arrubia, G. Tormen (2015): Constraining the distribution of dark matter in dwarf spheroidal galaxies with stellar tidal streams, arXiv:1501.04968</a></div> </td></tr>
+
+        <tr><td style="color: grey; padding-top: 20px;">Contact</td></tr>
+
+        <tr><td>
+          <script>
+            <!--
+            var ersteswort = "err";
+            var zweiteswort = "ani";
+            var dritteswort = "uni";
+            var vierteswort = "stra";
+            var fuenfteswort = "fr";
+            document.write("<a href=" + "mail" + "to:" + ersteswort +  zweiteswort + "&#064;" + dritteswort + vierteswort + "." + fuenfteswort +">" + ersteswort + zweiteswort + "&#064;" + dritteswort + vierteswort + "." + fuenfteswort + "<\/a>")
+            -->
+          </script>
+        </td></tr>  
+      
+        
+      </table>
+    </td></tr>
+
+    <!-- Last column -->
+  
+  </table>
+  
+
+  <div id="myModal" class="modal">
+    <img class="modal-content" id="img01" alt="selfie" src="selfie.jpg">
+  </div>
+
+
+  <script>
+    var modal = document.getElementById('myModal');
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    }
+
+    document.onclick = function(event) {
+        if (event.target != img) {
+            modal.style.display = "none";
+        }
+    }
+    modal.onclick = function(event) {
+            modal.style.display = "none";
+    }
+  </script>
+
+          
+
+
+</body>
+</html>
+
