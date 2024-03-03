@@ -109,13 +109,30 @@
     <IMG src="code/reject_sampling.png" width="300"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
     </div>
     <br>
-    The output is a 6D array of positions and velocities. The plot below shows a Plummer N-body model generated using the code.
-    <br><br>
+    The output is a 6D array of positions and velocities. Below, as an example, density and radial velocity dispersion for a Hernquist sphere generated using the code. 
+    The <i>N</i>-body realization shown has <i>N</i>=10<sup>7</sup> particles generated for radii in the range -3&lt;log<sub>10</sub>(r/a)&lt;+3.
+    For reference, the analytical Hernquist density- and radial velocity dispersion profiles are plotted in blue. 
+    <br>
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/Hernquist_overview.png" width="650"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>
+    <br>
+    The corresponding residuals are as follows, symmetric around the <i>x</i>-axis, with the effects of discreteness noise visible in the central regions:
+    <br>
+    <br>
+    <div style="text-align: center">
+    <IMG src="code/Hernquist_overview_bottom.png" width="650"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
+    </div>   
+    <br>
+    The code can be easily adapted to generate other spherical models with isotropic kinematics. Adapting the parameters to &alpha;=2, &beta;=5, &gamma;=0, for example, produces a Plummer model as shown below.
+    <br>
+    <br>
     <div style="text-align: center">
     <IMG src="code/plummer.png" width="450"  style="border: 0px; text-align: center;" alt="plot"  class="imgshadow">
     </div>   
     <br>
-    Launching the <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank">code as on github</a> (<i>nbody.py</i>) produces a <i>N</i>=10<sup>7</sup> particle model of a Hernquist sphere, and saves the particle positions and velocities as a binary numpy file <i>model.npy</i>. Changing the model name in the code to <i>model.dat</i> produces ASCII output.    
+    Launching the <a class="menu" href="http://github.com/rerrani/nbopy" target="_blank">code as on github</a> (<i>nbody.py</i>) produces a <i>N</i>=10<sup>7</sup> particle model of a Hernquist sphere, and saves the particle positions and velocities as a binary numpy file <i>model.npy</i> in 'float16' format (for calculations that use the particle data directly, it is advisable to change the format to 'float64'). Changing the model name in the code to <i>model.dat</i> produces ASCII output. 
 
     
     <div style="padding: 10px"><br></div>   
